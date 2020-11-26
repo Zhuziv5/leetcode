@@ -37,3 +37,6 @@ char isValid(char *s)
         }
     }
 }
+int main(void)
+{
+}
