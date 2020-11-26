@@ -17,20 +17,24 @@ int main(void)
 }
 int *reversePrint(struct ListNode *head, int *returnSize)
 {
-
-    struct ListNode *tmp = head;
-    while (tmp != NULL)
+    if (head == NULL)
     {
-        *returnSize++;
-        tmp = tmp->next;
+        *returnSize = 0;
+        return NULL;
     }
-    int *ret = (int *)malloc(*returnSize);
-    memset(ret, 0, *returnSize);
-    tmp = head;
-
-    for (int i = 0; i < *returnSize; i++)
+    struct ListNode *p = head;
+    int num = 0;
+    while (p != NULL)
     {
-        ret[(*returnSize) - i - 1] = tmp->val;
-        tmp = tmp->next;
+        p = p->next;
+        num++;
     }
+    int *res = (int *)malloc(sizeof(int) * num);
+    for (int i = 0; i < num; i++)
+    {
+        res[num - 1 - i] = head->val;
+        head = head->next;
+    }
+    *returnSize = num;
+    return res;
 }
